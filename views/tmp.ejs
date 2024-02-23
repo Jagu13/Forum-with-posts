@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TMP</title>
+    <style>
+        #post {
+            width: 400px;
+            height: 100px;
+        }
+    </style>
+
+
+</head>
+<body>
+<form action="/submit" method="POST">
+    <label for="name">First name:</label><br>
+    <input type="text" id="name" name="name" placeholder="Imię lub nick"><br>
+    <label for="post">Post:</label><br>
+    <textarea type="text" id="post" name="post" placeholder="Twój post"></textarea>
+    <br>
+    <input type="submit" value="Wyślij">
+</form>
+
+<% if (locals.nick && locals.post) { %>
+    <p><strong>
+        <%= nick %>
+    </strong></p>
+    <p>
+        <%= post %>
+    </p>
+<% } else { %>
+<p>Brak nowych postów.</p>
+<% } %>
+
+</body>
+</html>
