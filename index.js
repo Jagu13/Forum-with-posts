@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get('/', (req, res) => {
-    res.render("tmp.ejs");
+    res.render("tmp.ejs", { posts: posts });
 });
 
 app.post('/submit', (req, res) => {
@@ -18,7 +18,7 @@ app.post('/submit', (req, res) => {
         post: req.body["post"],
     };
     posts.push(newPost);
-    res.render("tmp.ejs", newPost);
+    res.render("tmp.ejs", { posts: posts });
 })
 
 app.listen(port, () => {

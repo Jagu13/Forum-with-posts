@@ -12,27 +12,22 @@
             height: 100px;
         }
     </style>
-
-
 </head>
 <body>
 <form action="/submit" method="POST">
     <label for="name">First name:</label><br>
-    <input type="text" id="name" name="name" placeholder="Imię lub nick"><br>
+    <input type="text" id="name" name="name" placeholder="Imię lub nick" required><br>
     <label for="post">Post:</label><br>
-    <textarea type="text" id="post" name="post" placeholder="Twój post"></textarea>
+    <textarea type="text" id="post" name="post" placeholder="Twój post" required></textarea>
     <br>
     <input type="submit" value="Wyślij">
 </form>
 
-<% if (locals.nick && locals.post) { %>
-    <p><strong>
-        <%= nick %>
-    </strong></p>
-    <p>
-        <%= post %>
-    </p>
-<% } else { %>
+<% if (posts.length > 0) { %>
+    <% posts.forEach(function(post) { %>
+        <p><strong><%= post.nick %></strong></p>
+        <p><%= post.post %></p>
+    <% }); %>
 <p>Brak nowych postów.</p>
 <% } %>
 
